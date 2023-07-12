@@ -11,6 +11,10 @@ import ru.titov.paterns.creation.prototype.DemoPrototype;
 import ru.titov.paterns.creation.singleton.DemoSingleton;
 import ru.titov.paterns.structural.adapter.Postman;
 import ru.titov.paterns.structural.adapter.PostmanAdapter;
+import ru.titov.paterns.structural.bridge.AutoIron;
+import ru.titov.paterns.structural.bridge.AutoLaundress;
+import ru.titov.paterns.structural.bridge.ManualIron;
+import ru.titov.paterns.structural.bridge.ManualLaundress;
 import ru.titov.paterns.structural.decorator.Delivery;
 import ru.titov.paterns.structural.decorator.Order;
 import ru.titov.paterns.structural.proxy.BonusProxy;
@@ -55,7 +59,9 @@ public class PaternsApplication {
         Delivery delivery = new Delivery(orderCar);
         log.info(delivery.sum().toString());
         //bridge
-
+        new AutoLaundress(new ManualIron()).wash("Одеяло");
+        new AutoLaundress(new AutoIron()).wash("Полотенце");
+        new ManualLaundress(new ManualIron()).wash("Рубашка");
 
     }
 
