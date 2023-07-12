@@ -17,6 +17,7 @@ import ru.titov.paterns.structural.bridge.ManualIron;
 import ru.titov.paterns.structural.bridge.ManualLaundress;
 import ru.titov.paterns.structural.decorator.Delivery;
 import ru.titov.paterns.structural.decorator.Order;
+import ru.titov.paterns.structural.facade.FacadeLaundress;
 import ru.titov.paterns.structural.proxy.BonusProxy;
 
 import java.util.Map;
@@ -62,6 +63,8 @@ public class PaternsApplication {
         new AutoLaundress(new ManualIron()).wash("Одеяло");
         new AutoLaundress(new AutoIron()).wash("Полотенце");
         new ManualLaundress(new ManualIron()).wash("Рубашка");
+        //facade
+        new FacadeLaundress(new ManualLaundress(new ManualIron()), new AutoLaundress(new ManualIron())).wash("Пиджак");
 
     }
 
