@@ -20,13 +20,13 @@ import ru.titov.patterns.structural.decorator.Order;
 import ru.titov.patterns.structural.facade.FacadeLaundress;
 import ru.titov.patterns.structural.proxy.BonusProxy;
 import ru.titov.patterns.test.TestFibonachi;
+import ru.titov.patterns.test.finality.FinalityTest;
 import ru.titov.patterns.test.pecs.Child;
 import ru.titov.patterns.test.pecs.Grandson;
 import ru.titov.patterns.test.pecs.Parent;
 import ru.titov.patterns.test.pecs.Top;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -101,6 +101,17 @@ public class PaternsApplication {
 //        child.takeMany(grandsons);
         Parent parent1 = new Child();
 //        Parent parent2 = (Parent) new Top();
+
+        //Exception finally
+        try {
+            FinalityTest.test();
+        } catch (Throwable e) {
+            log.info("supressed errors message");
+            Throwable[] throwables = e.getSuppressed();
+            Arrays.stream(throwables).forEach(throwable -> log.info("---->{}", throwable.getMessage()));
+            log.info("main error");
+            log.info(e.getMessage());
+        }
     }
 
 
