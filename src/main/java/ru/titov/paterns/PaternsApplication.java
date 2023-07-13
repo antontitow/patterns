@@ -66,6 +66,10 @@ public class PaternsApplication {
         //facade
         new FacadeLaundress(new ManualLaundress(new ManualIron()), new AutoLaundress(new ManualIron())).wash("Пиджак");
 
+        new TestFibonachi().getList(10);
+
+
     }
+
 
 }
